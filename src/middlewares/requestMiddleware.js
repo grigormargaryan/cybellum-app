@@ -20,7 +20,7 @@ export default function requestMiddleware() {
         return dispatch({type: types.LOGOUT});
       } else {
         return apiCall({
-          url: `${process.env.REACT_APP_TEST_API}/users/auth/refresh-token/`,
+          url: `${process.env.REACT_APP_TEST_API}/refresh-token/`,
           dispatch: dispatch,
           method: 'post',
           data: JSON.stringify({refresh: token}),

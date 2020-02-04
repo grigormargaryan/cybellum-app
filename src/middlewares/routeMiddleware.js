@@ -10,7 +10,7 @@ class PrivateRouteContainer extends React.Component {
       this.props.isAuthenticated ? (
       <Route {...this.props}/>
     ):
-        <Redirect to='/sign-in' />
+        <Redirect to='/login' />
     );
   }
 }

@@ -17,10 +17,10 @@ import {customInput} from '../../fields';
 import {
   required,
 } from '../../validation';
-import './Signin.scss'
+import './Login.scss'
 
 
-class SignInComponent extends Component {
+class LoginComponent extends Component {
 
   render() {
     const {handleSubmit, errors} = this.props;
@@ -87,9 +87,9 @@ class SignInComponent extends Component {
   }
 }
 
-SignInComponent = reduxForm({
+LoginComponent = reduxForm({
   form: 'login',
-})(SignInComponent);
+})(LoginComponent);
 
-export default SignInComponent;
+export default LoginComponent;
 

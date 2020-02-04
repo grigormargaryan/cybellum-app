@@ -12,15 +12,14 @@ import { loadingBarMiddleware } from 'react-redux-loading-bar';
 import rootReducer from '../reducers';
 
 export default history => {
-  const persistedAuthFilter = createFilter('auth', ['access', 'refresh', 'user']);
-  const persistedGlobalsFilter = createFilter('globals', ['appSidebar']);
+  const persistedAuthFilter = createFilter('auth', ['access', 'refresh']);
   const middlewareHistory = routerMiddleware(history);
   const reducer = persistReducer(
     {
-      key: 'levelhunt',
+      key: 'cybellum',
       storage: storage,
-      whitelist: ['auth', 'globals'],
-      transforms: [persistedAuthFilter, persistedGlobalsFilter]
+      whitelist: ['auth'],
+      transforms: [persistedAuthFilter]
     },
     rootReducer
   );

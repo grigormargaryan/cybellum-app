@@ -5,7 +5,7 @@ import  apiCall from '../services/apiCall';
 export const loginAction = (data) => {
   return (dispatch) => {
     return apiCall({
-      url: `/users/auth/login/`,
+      url: `/login`,
       dispatch:dispatch,
       method: 'post',
       data: JSON.stringify(data),

@@ -3,19 +3,9 @@ import { routerReducer } from 'react-router-redux';
 import { reducer as formReducer } from 'redux-form';
 import { loadingBarReducer } from 'react-redux-loading-bar';
 import auth, * as fromAuth from './auth';
-import globals from './globals';
-import categories  from './categories';
-import university  from './university';
-import skill  from './skill';
-import topic  from './topic';
 
 export default combineReducers({
-  globals: globals,
   auth: auth,
-  categories: categories,
-  university: university,
-  skill: skill,
-  topic: topic,
   loadingBar: loadingBarReducer,
   router: routerReducer,
   form:formReducer

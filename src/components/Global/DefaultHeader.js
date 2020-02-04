@@ -1,30 +1,14 @@
 import React, { Component } from 'react';
-import ReactDOM from 'react-dom';
 import { DropdownItem, DropdownMenu, DropdownToggle, Nav } from 'reactstrap';
 import {connect} from 'react-redux';
 import bindActionCreators from "redux/src/bindActionCreators";
-import {func} from 'prop-types';
-import {sidebarAction} from '../../actions/globals';
 
 import { AppHeaderDropdown, AppNavbarBrand, AppSidebarToggler } from '@coreui/react';
-import logo from '../../assets/img/logo.png';
+import logo from '../../assets/img/cybellum-logo.svg';
 import avatar from '../../assets/img/avatar.jpg';
 
 
 class DefaultHeader extends Component {
-
-  constructor(props) {
-    super(props);
-    this.asideTogglerRef = React.createRef();
-  }
-
-  componentDidMount() {
-    ReactDOM.findDOMNode(this.asideTogglerRef.current).addEventListener('click', this.handleClick);
-  }
-
-  handleClick = () => {
-    this.props.sidebarAction();
-  };
 
   render() {
 
@@ -35,9 +19,8 @@ class DefaultHeader extends Component {
           full={{ src: logo, width: 89, height: 38, alt: 'LevelHunt Logo' }}
           minimized={{ src: logo, width: 89, height: 38, alt: 'LevelHunt Logo' }}
         />
-        <AppSidebarToggler className="d-md-down-none" display="lg" ref={this.asideTogglerRef}/>
 
-        <Nav className="ml-auto" navbar>
+        <Nav className="ml-auto pr-5" navbar>
           <AppHeaderDropdown direction="down">
             <DropdownToggle nav>
               <img src={avatar} className="img-avatar" alt="admin@bootstrapmaster.com" />
@@ -57,14 +40,11 @@ class DefaultHeader extends Component {
   }
 }
 
-DefaultHeader.propTypes = {
-  sidebarAction: func.isRequired,
-};
 
 const mapStateToProps = state => ({
 });
 
-const mapDispatchToProps = dispatch => bindActionCreators({ sidebarAction }, dispatch);
+const mapDispatchToProps = dispatch => bindActionCreators({  }, dispatch);
 
 export default connect(
   mapStateToProps, mapDispatchToProps,

@@ -28,12 +28,12 @@ export default function({ dispatch ,types, customPayload, ...params }) {
         dispatch({
           type: types[2],
           error: true,
-          payload: error.response.data,
+          payload: error.message,
         });
-        if(error.response.data.name) {
-          notification.createNotification('error', error.response.data.name);
+        if(error.message) {
+          notification.createNotification('error', error.message);
         }
-        reject(error.response.data);
+        reject(error.message);
       });
   });
 }

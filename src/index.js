@@ -1,12 +1,42 @@
-import React from 'react';
+import React, {Suspense} from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import * as serviceWorker from './serviceWorker';
+import {Router, Switch} from 'react-router-dom';
+import Loadable from 'react-loadable';
+import {Provider} from "react-redux";
+import history from './history';
+import configureStore from './store';
+import {PrivateRoute, PublicRoute} from './middlewares/routeMiddleware';
+import 'react-notifications/lib/notifications.css';
+import './App.scss';
 
-ReactDOM.render(<App />, document.getElementById('root'));
 
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA
-serviceWorker.unregister();
+
+async function init() {
+  const loading = () => <div className="animated fadeIn pt-3 text-center">Loading...</div>;
+  const DefaultLayout = Loadable({
+    loader: () => import('./components/Global/DefaultLayoutComponent'),
+    loading
+  });
+
+  const LoginContainer = Loadable({
+    loader: () => import('./containers/LoginContainer'),
+    loading
+  });
+
+  const store = await configureStore(history);
+  ReactDOM.render(
+    <Provider store={store}>
+      <Router history={history}>
+        <Suspense fallback={loading()}>
+          <div className="app">
+            <Switch>
+              <PublicRoute exact path="/login" name="Sign in" component={LoginContainer}/>
+              <PrivateRoute path="/" name="Home" component={DefaultLayout}/>
+            </Switch>
+          </div>
+        </Suspense>
+      </Router>
+    </Provider>, document.getElementById('root'));
+}
+
+init();

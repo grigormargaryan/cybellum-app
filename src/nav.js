@@ -15,10 +15,5 @@ export default {
       url: '/categories',
       icon: 'fa fa-tags',
     },
-    {
-      name: 'Universities',
-      url: '/universities',
-      icon: 'fa fa-university',
-    },
   ],
 };

@@ -2,12 +2,12 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { func } from 'prop-types';
-import SignInComponent from '../components/SignIn/SignInComponent';
+import LoginComponent from '../components/Login/LoginComponent';
 import { loginAction } from '../actions/auth';
 import { authErrors, getSuccessMsg, isAuthenticated } from '../reducers';
 
 
-class SignInContainer extends Component {
+class LoginContainer extends Component {
 
   onSubmit = values => {
 
@@ -19,7 +19,7 @@ class SignInContainer extends Component {
 	render() {
 		return (
 			<div className="login-page">
-				<SignInComponent
+				<LoginComponent
 					onSubmit={this.onSubmit}
 					errors={this.props.errors}
 					successMsg={this.props.successMsg}
@@ -30,7 +30,7 @@ class SignInContainer extends Component {
 	}
 }
 
-SignInContainer.propTypes = {
+LoginContainer.propTypes = {
   loginAction: func.isRequired,
 };
 
@@ -45,4 +45,4 @@ const mapDispatchToProps = dispatch => bindActionCreators({ loginAction }, dispa
 export default connect(
 	mapStateToProps,
 	mapDispatchToProps
-)(SignInContainer);
+)(LoginContainer);
